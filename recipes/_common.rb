@@ -18,9 +18,7 @@
 #
 
 # Install package, dependent on platform
-node['nfs']['packages'].each do |nfspkg|
-  package nfspkg
-end
+package node['nfs']['packages']
 
 # On FreeBSD, create the potentially missing configuration directory
 directory ::File.dirname(node['nfs']['config']['server_template']) do
