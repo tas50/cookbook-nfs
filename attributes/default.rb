@@ -59,10 +59,6 @@ case node['platform_family']
 when 'rhel'
   if node['platform'] == 'amazon'
     # For future amazon versions
-  elsif node['platform_version'].to_i <= 5
-    # RHEL5 edge case package set and portmap name
-    default['nfs']['packages'] = %w(nfs-utils portmap)
-    default['nfs']['service']['portmap'] = 'portmap'
   elsif node['platform_version'].to_i >= 7
     default['nfs']['service']['lock'] = 'nfs-lock'
     default['nfs']['service']['server'] = 'nfs-server'
