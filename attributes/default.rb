@@ -126,12 +126,6 @@ when 'debian'
     default['nfs']['service']['idmap'] = 'idmapd'
     default['nfs']['idmap']['pipefs_directory'] = '/run/rpc_pipefs'
 
-    # Ubuntu 13.04 and earlier service name = 'portmap'
-    if node['platform_version'].to_f <= 13.04
-      default['nfs']['packages'] = %w(nfs-common portmap)
-      default['nfs']['service']['portmap'] = 'portmap'
-    end
-
     if Chef::VersionConstraint.new('>= 15.04').include?(node['platform_version'])
       default['nfs']['service']['lock'] = 'rpc-statd'
       default['nfs']['service']['idmap'] = 'nfs-idmapd'
