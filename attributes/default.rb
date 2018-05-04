@@ -109,10 +109,6 @@ when 'debian'
   when 'debian'
 
     case node['platform_version'].to_i
-        # Debian 6.0
-        when 6 # (1..6)
-          default['nfs']['packages'] = %w(nfs-common portmap)
-          default['nfs']['service']['portmap'] = 'portmap'
         when 9 # (9..99)
           # identical to Ubuntu > 15.04?!
           default['nfs']['service']['lock'] = 'rpc-statd'
